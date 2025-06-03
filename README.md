@@ -8,17 +8,18 @@ RNA-sequencing (RNA-seq) maakt het mogelijk om de expressie van duizenden genen 
 
 In dit project analyseren we RNA-seq data van synoviaal weefsel van vier RA-patiënten en vier gezonde individuen. We brengen in kaart welke genen significant op- of neerwaarts gereguleerd zijn en onderzoeken via pathway-analyse en GO-enrichment welke biologische mechanismen mogelijk betrokken zijn bij RA.
 
-🎯 Doelstelling
+--- 
 
-Het identificeren van differentieel tot expressie komende genen bij RA-patiënten ten opzichte van gezonde personen, en het koppelen van deze genen aan relevante biologische pathways en processen.
+## 📁 Inhoud/structuur
 
-
-❓ Deelvragen
-- Welke genen zijn significant op- of neerwaarts gereguleerd bij RA-patiënten?
-
-- Aan welke KEGG pathways zijn deze genen gekoppeld?
-
-- Welke biologische processen (GO-termen) zijn oververtegenwoordigd onder de differentieel gereguleerde genen?
+- `data/raw/` – fictionele datasets voor de analyse van spreuk effectiviteit, gevaar en welke spreuken het beste samengaan met verschillende types staf.  
+- `data/processed` - verwerkte datasets gegenereerd met scripts 
+- `scripts/` – scripts om prachtige onzin te genereren
+- `resultaten/` - grafieken en tabellen
+- `bronnen/` - gebruikte bronnen 
+- `README.md` - het document om de tekst hier te genereren
+- `assets/` - overige documenten voor de opmaak van deze pagina
+- `data_stewardship/` - Voor de competentie beheren ga je aantonen dat je projectgegevens kunt beheren met behulp van GitHub. In deze folder kan je hulpvragen terugvinden om je op gang te helpen met de uitleg van data stewardship.
 
 ---
 
