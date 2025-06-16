@@ -1,10 +1,9 @@
-
-# Transcriptomics Analyse bij Reumatoïde Artritis (RA)
 <p align="center">
   <img src="Voorblad/Reuma_voorblad.png" alt="Voorblad" width="600"/>
 </p>
 
-## 📘 Introductie
+# Transcriptomics Analyse bij Reumatoïde Artritis (RA)
+
 Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het afweersysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die betrokken zijn bij de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar verschillende studies wijzen op een belangrijke rol van immuungerelateerde genen en signaleringsroutes [1,2].
 
 RNA-sequencing (RNA-seq) maakt het mogelijk om de expressie van duizenden genen tegelijk te meten. Door de genexpressieprofielen van RA-patiënten te vergelijken met die van gezonde controles, kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens gekoppeld worden aan bekende biologische processen (Gene Ontology) of signaalroutes (zoals KEGG pathways), wat kan leiden tot nieuwe inzichten in de pathogenese van RA [3].
