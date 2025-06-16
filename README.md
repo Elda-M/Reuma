@@ -14,14 +14,14 @@ In dit project analyseren we RNA-seq data van synoviaal weefsel van vier RA-pati
 
 ## 📁 Inhoud/structuur
 
-- `data/raw/` – fictionele datasets voor de analyse van spreuk effectiviteit, gevaar en welke spreuken het beste samengaan met verschillende types staf.  
-- `data/processed` - verwerkte datasets gegenereerd met scripts 
-- `scripts/` – scripts om prachtige onzin te genereren
-- `resultaten/` - grafieken en tabellen
-- `bronnen/` - gebruikte bronnen 
-- `README.md` - het document om de tekst hier te genereren
-- `assets/` - overige documenten voor de opmaak van deze pagina
-- `data_stewardship/` - Voor de competentie beheren ga je aantonen dat je projectgegevens kunt beheren met behulp van GitHub. In deze folder kan je hulpvragen terugvinden om je op gang te helpen met de uitleg van data stewardship.
+- `Data/raw/` – Ruwe datasets die als input dienen voor de analyse. 
+- `Data/processed` - Verwerkte datasets die zijn gegenereerd met behulp van scripts.
+- `Scripts/` – R-scripts voor preprocessing, analyse en visualisatie.
+- `Resultaten/` - Grafieken, tabellen en outputbestanden uit de analyses.
+- `Bronnen/` - Externe bronnen zoals artikelen, handleidingen of databronnen. 
+- `README.md` - Deze pagina met een toelichting op de projectstructuur en inhoud.
+- `Voorblad/` - Documenten die horen bij de opmaak van het verslag
+- `data_stewardship/` - Mappen en bestanden om aan te tonen hoe je de projectdata beheert.
 
 ---
 
