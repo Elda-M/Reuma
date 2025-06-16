@@ -4,11 +4,11 @@
 
 # Transcriptomics Analyse bij Reumatoïde Artritis (RA)
 
-Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het afweersysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die betrokken zijn bij de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar verschillende studies wijzen op een belangrijke rol van immuungerelateerde genen en signaleringsroutes [1,2].
+Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes [1]
 
-RNA-sequencing (RNA-seq) maakt het mogelijk om de expressie van duizenden genen tegelijk te meten. Door de genexpressieprofielen van RA-patiënten te vergelijken met die van gezonde controles, kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens gekoppeld worden aan bekende biologische processen (Gene Ontology) of signaalroutes (zoals KEGG pathways), wat kan leiden tot nieuwe inzichten in de pathogenese van RA [3].
+RNA-sequencing (RNA-seq) biedt een krachtig middel om de expressie van duizenden genen gelijktijdig te meten. Door het vergelijken van genexpressieprofielen tussen RA-patiënten en gezonde controles kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens worden gekoppeld aan biologische processen via Gene Ontology (GO) en aan signaalroutes via KEGG-pathways, wat kan leiden tot nieuwe inzichten in de pathogenese van RA [2].
 
-In dit project analyseren we RNA-seq data van synoviaal weefsel van vier RA-patiënten en vier gezonde individuen. We brengen in kaart welke genen significant op- of neerwaarts gereguleerd zijn en onderzoeken via pathway-analyse en GO-enrichment welke biologische mechanismen mogelijk betrokken zijn bij RA.
+In dit project analyseren we RNA-seq data van synoviaal weefsel afkomstig van vier RA-patiënten en vier gezonde individuen. We identificeren genen die significant op- of neerwaarts gereguleerd zijn, en voeren pathway- en GO-analyse uit om te onderzoeken welke biologische mechanismen mogelijk een rol spelen bij RA. Het doel is om nieuwe aanknopingspunten te vinden voor het begrijpen van de ziekte op transcriptomisch niveau.
 
 --- 
 
@@ -148,6 +148,12 @@ De KEGG- en GO-analyse bevestigen dat reumatoïde artritis gepaard gaat met verh
 
 Deze studie laat zien dat RNA-seq een krachtig hulpmiddel is om inzicht te krijgen in de moleculaire mechanismen van RA en biedt mogelijke aanknopingspunten voor biomarkerontwikkeling of gerichte therapieën.
 
+### 📚 Bronnen
+
+[1] [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf) – overzicht van genexpressie bij RA    
+[2] [RNA_sequencing.pdf](Bronnen/RNAsequencing.pdf) – achtergrond over pathway- en GO-analyse
+
+
 ## 💻 GitHub en Reproduceerbaarheid
 
 Voor dit project is GitHub ingezet om de RNA-seq analyse reproduceerbaar en transparant te beheren. De repository is logisch gestructureerd met aparte mappen voor ruwe data (data/), scripts (scripts/), resultaten (results/) en documentatie (docs/).
@@ -161,10 +167,5 @@ Visualisaties (zoals de volcano plot en KEGG-pathwayplaatjes) zijn opgeslagen al
 Versiebeheer via GitHub zorgt ervoor dat iedere aanpassing in het script of data-analyseproces wordt bijgehouden. Zo is transparant te volgen wat er wanneer is aangepast, wat bijdraagt aan de wetenschappelijke betrouwbaarheid van dit project.
 
 
-## 🔖 Bronnen
-[1] Smolen JS et al. Rheumatoid arthritis. Lancet. 2016;388(10055):2023-2038. doi:10.1016/S0140-6736(16)30173-8
 
-[2] Firestein GS. Evolving concepts of rheumatoid arthritis. Nature. 2003 May;423(6937):356–361. doi:10.1038/nature01661
-
-[3] Li Y et al. Application of RNA-seq in studying RA pathogenesis. Frontiers in Genetics. 2021;12:620209. doi:10.3389/fgene.2021.620209
 
