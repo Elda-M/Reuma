@@ -36,7 +36,7 @@ Voor functionele interpretatie zijn KEGG-pathways geanalyseerd met het pathview-
 ▸ De gebruikte scripts zijn te vinden in [`Scripts/`](Scripts/)  
 ▸ De gegenereerde resultaten (tabellen en figuren) staan in [`Resultaten/`](Resultaten/)  
 ▸ Alle verwerkte inputdata (zoals `.BAM`-bestanden, tellingen en annotaties) zijn beschikbaar in [`Data/processed/`](Data/processed/)   
-▸ Zie het [flowschema](Resultaten/method_flowchart.png) voor een visueel overzicht van de analysepipeline 
+▸ Zie het [Flowschema](Resultaten/Flowschema.png) voor een visueel overzicht van de analysepipeline 
 
 ---
 
