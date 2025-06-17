@@ -40,21 +40,30 @@ Alle gebruikte scripts zijn te vinden in [`Scripts/Eigen data.R`](Scripts/Eigen_
 
 ## 📊 Resultaten
 
+Na kwaliteitscontrole en mapping zijn de reads succesvol uitgelijnd op het humane referentiegenoom GRCh38. Op basis van de gen-tellingen (`count_matrix_groot.csv`) werd met `DESeq2` een differentiële expressieanalyse uitgevoerd. Hieruit kwamen meerdere genen significant verschillend tot expressie tussen RA- en controlemonsters.
+
+In de volcano plot ([VolcanoplotWC.png](Resultaten/VolcanoplotWC.png)) zijn deze DEGs visueel weergegeven. Genen met een p-waarde < 0.05 en |log2 fold change| > 1 zijn rood gekleurd; enkele opvallende genen met hoge expressieverandering zijn gelabeld.
+
+Voor GO-analyse is eerst gecorrigeerd voor genlengtebias met een Probability Weighting Function ([pwf_plot.png](Resultaten/pwf_plot.png)). De daadwerkelijke GO-enrichment ([GO_resultaten_plot.png](Resultaten/GO_resultaten_plot.png)) toont dat termen gerelateerd aan immuunrespons, RNA-polymerase II-activiteit sterk verrijkt zijn onder de DE-genen.
+
+De KEGG-pathwayanalyse ([hsa05323.pathview.png](Resultaten/hsa05323.pathview.png)) geeft inzicht in RA-gerelateerde signaalroutes. Genen zoals **IL6**, **IL1B**, en **TLR2/4** vertonen duidelijke opregulatie binnen het ‘Rheumatoid arthritis’ pathway.
+
+Alle resultaten zijn opgeslagen in `Resultaten/`, inclusief de ruwe DESeq2-output (`Resultaten_RA_vs_Normal.csv`) en de gebruikte tellingen (`count_matrix_groot.csv`).
+
 
 
 
 ## ✅ Conclusie 
 
-Op basis van de RNA-seq analyse zijn meerdere genen gevonden die significant verschillen in expressie tussen RA-patiënten en gezonde controlepersonen. Deze genen zijn vooral betrokken bij immuungerelateerde processen, zoals cytokinesignalering, ontstekingsreacties en leukocytenactivatie.
+Deze transcriptomics-analyse heeft geleid tot de identificatie van meerdere differentieel tot expressie komende genen (DEGs) tussen RA-patiënten en gezonde individuen. Opvallend waren onder andere genen betrokken bij ontstekingsreacties en immuunactivatie, zoals IL6, TLR2/4 en CXCL-familieleden. De GO-enrichmentanalyse benadrukte vooral termen gerelateerd aan immuunrespons, RNA-polymeraseactiviteit en T-helpercel differentiatie. Deze resultaten zijn in lijn met bestaande literatuur over de rol van het immuunsysteem bij de pathogenese van RA.
 
-De KEGG- en GO-analyse bevestigen dat reumatoïde artritis gepaard gaat met verhoogde activiteit van ontstekingsroutes. Deze bevindingen ondersteunen het beeld dat RA een chronische ontstekingsziekte is met een sterke transcriptomische footprint in synoviaal weefsel.
+De KEGG-pathwayanalyse van het ‘Rheumatoid arthritis’ signaalnetwerk bevestigde deze bevindingen visueel en toonde opregulatie van meerdere ontstekingsgerelateerde routes. De combinatie van genexpressieanalyse en functionele annotatie onderstreept het belang van transcriptomics bij het beter begrijpen van RA op moleculair niveau.
 
-Deze studie laat zien dat RNA-seq een krachtig hulpmiddel is om inzicht te krijgen in de moleculaire mechanismen van RA en biedt mogelijke aanknopingspunten voor biomarkerontwikkeling of gerichte therapieën.
+Hoewel het aantal monsters beperkt was (n = 8), bieden de resultaten een waardevolle eerste indruk van genregulatie bij RA. Toekomstig onderzoek zou kunnen uitbreiden met een groter cohort, differentiatie tussen vroege en late RA, en aanvullende celtype-specifieke analyse (bijv. single-cell RNA-seq). Verder validatie via qPCR of proteomics wordt aanbevolen om de biologische relevantie van deze genen in context van RA te bevestigen.
 
-### 📚 Bronnen
+---
 
-[1] [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf) – overzicht van genexpressie bij RA    
-[2] [RNA_sequencing.pdf](Bronnen/RNAsequencing.pdf) – achtergrond over pathway- en GO-analyse
+
 
 
 ## 💻 GitHub en Reproduceerbaarheid
