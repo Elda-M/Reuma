@@ -25,18 +25,16 @@ In dit project analyseren we RNA-seq data van synoviaal weefsel afkomstig van vi
 
 ---
 
-## 📄 Methode
+## 🔬 Methode
 
-De analyse begon met het downloaden en uitpakken van RNA-seq data van vier RA-patiënten en vier gezonde controles. De reads werden uitgelijnd op het humane referentiegenoom (GRCh38) met het Rsubread-pakket in R, waarna de resulterende .BAM-bestanden werden gesorteerd en geïndexeerd. Vervolgens werd met featureCounts() een telling per gen uitgevoerd op basis van een GTF-annotatiebestand.
+Deze analyse gebruikt RNA-seq data van vier RA-patiënten en vier gezonde controles. De ruwe reads (FASTQ-bestanden) werden uitgelijnd op het humane referentiegenoom (GRCh38) met het `Rsubread`-pakket, waarna `.BAM`-bestanden werden gegenereerd. Deze zijn gesorteerd en geïndexeerd (`Data/processed/`).
 
-De gegenereerde count-matrix werd ingelezen in het DESeq2-pakket om differentieel tot expressie komende genen (DEGs) te identificeren. Hierbij werd per gen de log2 fold change en aangepaste p-waarde berekend. Significante DEGs (padj < 0.05 en |log2FC| > 1) werden gevisualiseerd in een volcano plot.
+Met `featureCounts()` werd een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix (`count_matrix_groot.csv`). De differentiële expressie-analyse werd uitgevoerd in `DESeq2`, waarbij log2 fold changes en aangepaste p-waardes (padj) werden berekend. De significante genen (padj < 0.05, |log2FC| > 1) zijn gevisualiseerd in een volcano plot (`Resultaten/VolcanoplotWC.png`).
 
-Voor functionele interpretatie zijn KEGG-pathways geanalyseerd met het pathview-pakket. Gen-ID’s werden gemapt op het ‘Rheumatoid Arthritis’ pathway (hsa05323). Daarnaast is een GO-enrichmentanalyse uitgevoerd met het goseq-pakket, waarbij werd gecorrigeerd voor genlengtebias (PWF). De top GO-termen zijn gevisualiseerd in een bubbleplot.
+Voor functionele interpretatie is een KEGG-pathwayanalyse uitgevoerd met `pathview` (`hsa05323.pathview.png`). De GO-enrichmentanalyse is uitgevoerd met `goseq`, met biascorrectie via een Probability Weighting Function (`pwf_plot.png`). De top GO-termen zijn weergegeven in een dot plot (`GO_resultaten_plot.png`).
 
-▸ De gebruikte scripts zijn te vinden in [`Scripts/`](Scripts/)  
-▸ De gegenereerde resultaten (tabellen en figuren) staan in [`Resultaten/`](Resultaten/)  
-▸ Alle verwerkte inputdata (zoals `.BAM`-bestanden, tellingen en annotaties) zijn beschikbaar in [`Data/processed/`](Data/processed/)   
-▸ Zie het [Flowschema](Resultaten/Flowschema.png) voor een visueel overzicht van de analysepipeline 
+Alle gebruikte scripts zijn te vinden in [`Scripts/Eigen data.R`](Scripts/Eigen_data.R). Zie het [flowschema](Resultaten/Flowschema.png) voor een overzicht van de workflow.
+
 
 ---
 
