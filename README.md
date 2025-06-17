@@ -33,10 +33,10 @@ De gegenereerde count-matrix werd ingelezen in het DESeq2-pakket om differentiee
 
 Voor functionele interpretatie zijn KEGG-pathways geanalyseerd met het pathview-pakket. Gen-ID’s werden gemapt op het ‘Rheumatoid Arthritis’ pathway (hsa05323). Daarnaast is een GO-enrichmentanalyse uitgevoerd met het goseq-pakket, waarbij werd gecorrigeerd voor genlengtebias (PWF). De top GO-termen zijn gevisualiseerd in een bubbleplot.
 
-▸ De gebruikte scripts zijn te vinden in Scripts/.
-▸ De gegenereerde resultaten (tabellen en figuren) staan in Resultaten/.
-▸ Alle verwerkte inputdata (zoals .BAM-bestanden, tellingen en annotaties) zijn beschikbaar in Data/processed/.
-▸ Zie het flowschema voor een visueel overzicht van de analysepipeline.
+▸ De gebruikte scripts zijn te vinden in [`Scripts/`](Scripts/)  
+▸ De gegenereerde resultaten (tabellen en figuren) staan in [`Resultaten/`](Resultaten/)  
+▸ Alle verwerkte inputdata (zoals `.BAM`-bestanden, tellingen en annotaties) zijn beschikbaar in [`Data/processed/`](Data/processed/)   
+▸ Zie het [flowschema](Resultaten/method_flowchart.png) voor een visueel overzicht van de analysepipeline 
 
 ---
 
