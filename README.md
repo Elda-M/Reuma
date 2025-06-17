@@ -4,7 +4,9 @@
 
 # Transcriptomics Analyse bij Reumatoïde Artritis (RA)
 
-Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes (zie [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf)).
+Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes (zie [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf)). 
+
+Eerdere studies (zie [....pdf](Bronnen/.....pdf)) tonen aan dat ontstekingsgerelateerde genen zoals *IL6*, *IL1B* en *TLR4* een sleutelrol spelen bij RA. Ook signaleringsroutes zoals TNF- en Toll-like-receptor pathways zijn herhaaldelijk in verband gebracht met de pathogenese van RA.
 
 RNA-sequencing (RNA-seq) biedt een krachtig middel om de expressie van duizenden genen gelijktijdig te meten. Door het vergelijken van genexpressieprofielen tussen RA-patiënten en gezonde controles kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens worden gekoppeld aan biologische processen via Gene Ontology (GO) en aan signaalroutes via KEGG-pathways, wat kan leiden tot nieuwe inzichten in de pathogenese van RA (zie [RNAsequencing.pdf](Bronnen/RNAsequencing.pdf)).
 
