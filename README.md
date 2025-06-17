@@ -4,11 +4,11 @@
 
 # Transcriptomics Analyse bij Reumatoïde Artritis (RA)
 
-Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het afweersysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die betrokken zijn bij de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar verschillende studies wijzen op een belangrijke rol van immuungerelateerde genen en signaleringsroutes [1,2].
+Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes [1]
 
-RNA-sequencing (RNA-seq) maakt het mogelijk om de expressie van duizenden genen tegelijk te meten. Door de genexpressieprofielen van RA-patiënten te vergelijken met die van gezonde controles, kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens gekoppeld worden aan bekende biologische processen (Gene Ontology) of signaalroutes (zoals KEGG pathways), wat kan leiden tot nieuwe inzichten in de pathogenese van RA [3].
+RNA-sequencing (RNA-seq) biedt een krachtig middel om de expressie van duizenden genen gelijktijdig te meten. Door het vergelijken van genexpressieprofielen tussen RA-patiënten en gezonde controles kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens worden gekoppeld aan biologische processen via Gene Ontology (GO) en aan signaalroutes via KEGG-pathways, wat kan leiden tot nieuwe inzichten in de pathogenese van RA [2].
 
-In dit project analyseren we RNA-seq data van synoviaal weefsel van vier RA-patiënten en vier gezonde individuen. We brengen in kaart welke genen significant op- of neerwaarts gereguleerd zijn en onderzoeken via pathway-analyse en GO-enrichment welke biologische mechanismen mogelijk betrokken zijn bij RA.
+In dit project analyseren we RNA-seq data van synoviaal weefsel afkomstig van vier RA-patiënten en vier gezonde individuen. We identificeren genen die significant op- of neerwaarts gereguleerd zijn, en voeren pathway- en GO-analyse uit om te onderzoeken welke biologische mechanismen mogelijk een rol spelen bij RA. Het doel is om nieuwe aanknopingspunten te vinden voor het begrijpen van de ziekte op transcriptomisch niveau.
 
 --- 
 
@@ -25,119 +25,25 @@ In dit project analyseren we RNA-seq data van synoviaal weefsel van vier RA-pati
 
 ---
 
-## ⚙️ Methode
-📁 Dataset
+## 📄 Methode
 
-De dataset bevat RNA-seq gegevens van synoviumbiopten van 4 gezonde controlepersonen en 4 patiënten met reumatoïde artritis (RA). De ruwe data zijn afkomstig van de Sequence Read Archive (SRA) en bestaan uit paired-end FASTQ-bestanden (~40.000 reads per sample). De sequentiegegevens zijn gegenereerd met een Illumina-platform (exacte platforminformatie: zie metadata bij SRA-toegang).
+De analyse begon met het downloaden en uitpakken van RNA-seq data van vier RA-patiënten en vier gezonde controles. De reads werden uitgelijnd op het humane referentiegenoom (GRCh38) met het Rsubread-pakket in R, waarna de resulterende .BAM-bestanden werden gesorteerd en geïndexeerd. Vervolgens werd met featureCounts() een telling per gen uitgevoerd op basis van een GTF-annotatiebestand.
 
-🔬 Preprocessing & Mapping
+De gegenereerde count-matrix werd ingelezen in het DESeq2-pakket om differentieel tot expressie komende genen (DEGs) te identificeren. Hierbij werd per gen de log2 fold change en aangepaste p-waarde berekend. Significante DEGs (padj < 0.05 en |log2FC| > 1) werden gevisualiseerd in een volcano plot.
 
-De FASTQ-bestanden zijn uitgelijnd (gemapt) tegen het humane referentiegenoom GRCh38 (GCF_000001405.40) met behulp van het align()-commando uit het Rsubread-pakket. Per sample zijn de gegenereerde BAM-bestanden gesorteerd en geïndexeerd met Rsamtools. Voor de genannotatie is gebruik gemaakt van een bijbehorend GTF-bestand (GRCh37.p13), waarbij enkel exon-regio’s werden geteld.
+Voor functionele interpretatie zijn KEGG-pathways geanalyseerd met het pathview-pakket. Gen-ID’s werden gemapt op het ‘Rheumatoid Arthritis’ pathway (hsa05323). Daarnaast is een GO-enrichmentanalyse uitgevoerd met het goseq-pakket, waarbij werd gecorrigeerd voor genlengtebias (PWF). De top GO-termen zijn gevisualiseerd in een bubbleplot.
 
-align(index = "ref_human",
-      readfile1 = "sample_1.fastq",
-      readfile2 = "sample_2.fastq",
-      output_file = "sample1.BAM")
-
-📊 Genexpressiematrix
-
-De uitgelijnde reads werden geteld met featureCounts() uit het Rsubread-pakket. Genexpressiewaarden zijn berekend per gen op basis van samengevoegde exon-regio’s. De gegenereerde count-matrix werd opgeslagen als CSV voor verdere analyse.
-
-📈 Differentiële genexpressieanalyse
-
-De genexpressiematrix werd ingelezen in DESeq2. Met behulp van een model waarin conditie (RA of gezond) als designfactor werd opgenomen, is een differentiële expressieanalyse uitgevoerd. De genen werden beschouwd als significant bij een aangepaste p-waarde (FDR) < 0.05 en een absolute log2 fold change > 1.
-
-dds <- DESeqDataSetFromMatrix(countData = counts,
-                              colData = treatment_table,
-                              design = ~ treatment)
-dds <- DESeq(dds)
-resultaten <- results(dds)
-
-🧬 KEGG pathway-analyse
-
-De differentieel tot expressie komende genen werden gebruikt als input voor pathview. Een genvector met log2FC-waarden werd gekoppeld aan KEGG-pathways, met nadruk op hsa05323 (reumatoïde artritis pathway). Visualisaties werden gegenereerd waarin up- en downregulatie met kleur werd weergegeven.
-
-pathview(
-  gene.data = gene_vector,
-  pathway.id = "hsa05323",
-  species = "hsa",
-  gene.idtype = "SYMBOL"
-)
-
-🧠 GO-analyse
-
-Voor gene ontology (GO)-verrijkingsanalyse werd het pakket goseq gebruikt, inclusief correctie voor genlengtebias met behulp van genlengtes opgehaald via biomaRt. Enkel genen met significante expressieveranderingen (padj < 0.05 & |log2FC| > 1) werden meegenomen.
-
-pwf <- nullp(all_genes, "hg38", "ensGene", bias.data = gene_lengths)
-GO.wall <- goseq(pwf, "hg38", "ensGene")
-
-📜 Analyseworkflow (stroomschema)
-
-FASTQ (RA + Gezond)
-     ↓
-Mapping (Rsubread::align → GRCh38)
-     ↓
-BAM → Sorteren + indexeren
-     ↓
-featureCounts (GTF GRCh37.p13)
-     ↓
-DESeq2 → DE-analyse
-     ↓
-↓                    ↓
-KEGG (pathview)     GO (goseq)
-
-🧠 Documentatie
-
-Het volledige script met commentaar en uitleg over elke stap is terug te vinden in scripts/RA_analysis_script.R. Alle parameters, bestandsnamen en filtercriteria zijn reproduceerbaar en consistent met bovenstaande beschrijving.
-
-
+▸ De gebruikte scripts zijn te vinden in [`Scripts/`](Scripts/)  
+▸ De gegenereerde resultaten (tabellen en figuren) staan in [`Resultaten/`](Resultaten/)  
+▸ Alle verwerkte inputdata (zoals `.BAM`-bestanden, tellingen en annotaties) zijn beschikbaar in [`Data/processed/`](Data/processed/)   
+▸ Zie het [Flowschema](Resultaten/Flowschema.png) voor een visueel overzicht van de analysepipeline 
 
 ---
 
 
 ## 📊 Resultaten
 
-🧬 Differentiële genexpressie
 
-Na normalisatie en statistische analyse met DESeq2 werden in totaal ___ genen gevonden die significant differentieel tot expressie kwamen bij RA-patiënten ten opzichte van gezonde controlepersonen (padj < 0.05 en |log₂FC| > 1). Van deze genen waren er:
-
-🔺 ___ genen up-gereguleerd
-
-🔻 ___ genen down-gereguleerd
-
-De genen met de sterkste expressieveranderingen waren onder andere [GENE1], [GENE2] en [GENE3].
-
-📍 Volcano plot
-In Figuur 1 is de volcano plot weergegeven. Op de x-as staat de log₂ fold change en op de y-as de -log₁₀ van de aangepaste p-waarde (padj). Significante genen zijn zichtbaar in kleur.
-
-📁 Bestand: results/VolcanoPlot_RA_vs_Normal.png
-
-Figuur 1. Volcano plot van differentiële genexpressie tussen RA en controle.
-
-
-🔗 KEGG-pathwayanalyse
-De genexpressieresultaten werden gekoppeld aan de KEGG-pathway "Rheumatoid Arthritis" (hsa05323). In Figuur 2 is te zien dat meerdere genen in deze pathway differentieel tot expressie komen, waaronder genen betrokken bij cytokinesignalering (TNF, IL1B, CXCL8).
-
-📁 Bestand: results/pathview_hsa05323.png
-
-Figuur 2. KEGG pathway visualisatie van hsa05323 met behulp van pathview. Rood: up-gereguleerd, groen: down-gereguleerd.
-
-🧠 Gene Ontology (GO) analyse
-De GO-enrichmentanalyse toonde significante oververtegenwoordiging van biologische processen gerelateerd aan het immuunsysteem. Enkele sterk verrijkte GO-termen zijn:
-
-"immune response"
-
-"leukocyte activation"
-
-"response to cytokine"
-
-📁 Bestand: results/GO_enrichment_plot.png
-
-Figuur 3. Visualisatie van de top verrijkte GO-termen (biological process).
-
-📋 Samenvatting
-
-De analyse bevestigt dat RA geassocieerd is met grootschalige genexpressieveranderingen, met name in immuungerelateerde pathways en processen. Zowel de KEGG-pathway-analyse als GO-analyse ondersteunen de rol van ontsteking, cytokinesignalering en immuunactivatie in RA.
 
 
 ## ✅ Conclusie 
@@ -147,6 +53,12 @@ Op basis van de RNA-seq analyse zijn meerdere genen gevonden die significant ver
 De KEGG- en GO-analyse bevestigen dat reumatoïde artritis gepaard gaat met verhoogde activiteit van ontstekingsroutes. Deze bevindingen ondersteunen het beeld dat RA een chronische ontstekingsziekte is met een sterke transcriptomische footprint in synoviaal weefsel.
 
 Deze studie laat zien dat RNA-seq een krachtig hulpmiddel is om inzicht te krijgen in de moleculaire mechanismen van RA en biedt mogelijke aanknopingspunten voor biomarkerontwikkeling of gerichte therapieën.
+
+### 📚 Bronnen
+
+[1] [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf) – overzicht van genexpressie bij RA    
+[2] [RNA_sequencing.pdf](Bronnen/RNAsequencing.pdf) – achtergrond over pathway- en GO-analyse
+
 
 ## 💻 GitHub en Reproduceerbaarheid
 
@@ -161,10 +73,5 @@ Visualisaties (zoals de volcano plot en KEGG-pathwayplaatjes) zijn opgeslagen al
 Versiebeheer via GitHub zorgt ervoor dat iedere aanpassing in het script of data-analyseproces wordt bijgehouden. Zo is transparant te volgen wat er wanneer is aangepast, wat bijdraagt aan de wetenschappelijke betrouwbaarheid van dit project.
 
 
-## 🔖 Bronnen
-[1] Smolen JS et al. Rheumatoid arthritis. Lancet. 2016;388(10055):2023-2038. doi:10.1016/S0140-6736(16)30173-8
 
-[2] Firestein GS. Evolving concepts of rheumatoid arthritis. Nature. 2003 May;423(6937):356–361. doi:10.1038/nature01661
-
-[3] Li Y et al. Application of RNA-seq in studying RA pathogenesis. Frontiers in Genetics. 2021;12:620209. doi:10.3389/fgene.2021.620209
 
