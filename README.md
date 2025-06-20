@@ -20,19 +20,20 @@
 
 Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. Hoewel de exacte oorzaak onbekend is, is er de afgelopen jaren veel vooruitgang geboekt in de behandeling ([Radu et al., 2021](Bronnen/Radu_2021_RA_management.pdf)).
 
-Dankzij RNA-sequencing zijn er belangrijke genexpressiepatronen in RA ontdekt. Onderzoeken tonen aan dat genen betrokken bij het celskelet, evenals miRNA's, duidelijk anders tot expressie komen bij vroege RA in vergelijking met gezonde personen ([Platzer et al., 2019](Bronnen/Platzer_2019_RA_gene_expression.pdf)). RNA-sequencing maakt het mogelijk om differentieel tot exressie komende genen (DEGs) te indentificeren en deze te koppelen aan biologische processen zoals Gene Ontology (GO) en KEGG-pathways. Deze aanpak geeft meer inzicht in de moleculaire mechanismen van RA ([Orr et al., 2022](Bronnen/Orr_2022_RNA_sequencing.pdf)).
+Dankzij RNA-sequencing zijn er belangrijke genexpressiepatronen in RA ontdekt. Onderzoeken tonen aan dat genen betrokken bij het celskelet, evenals miRNA's, duidelijk anders tot expressie komen bij vroege RA in vergelijking met gezonde personen ([Platzer et al., 2019](Bronnen/Platzer_2019_RA_gene_expression.pdf)). RNA-sequencing maakt het mogelijk om differentieel tot exressie komende genen (DEGs) te indentificeren en deze te koppelen aan biologische processen zoals Gene Ontology (GO) en KEGG-pathways. Deze aanpak geeft meer inzicht in de moleculaire mechanismen van RA ([Zhang et al., 2022](Bronnen/Zhang_2022_RNA_sequencing.pdf)).
 
 In dit project wordt met behulp van transcriptomische analyse onderzocht welke genen bij RA anders tot expressie komen dan bij gezonde personen en welke biologische processen daarbij betrokken zijn. Het doel is om via deze analyse meer inzicht te krijgen in de werking van RA op genetisch niveau.
 
 
 ## 🔬 Methode
 
-Deze analyse gebruikt RNA-seq data van vier RA-patiënten en vier gezonde controles. De ruwe reads (FASTQ-bestanden) werden uitgelijnd op het humane referentiegenoom (GRCh38) met het `Rsubread`-pakket, waarna `.BAM`-bestanden werden gegenereerd. Deze zijn gesorteerd en geïndexeerd (`Data/processed/`).
+Voor deze analyse is RNA-sequence data gebruikt van vier RA-patiënten en vier gezonde controles. De ruwe reads (FASTQ-bestanden) bevinden zicht in [Raw_Data](Data/raw/) Deze zijn uitgelijnd op het humane referentiegenoom GRCh38 met behulp van het `Rsubread`-pakket in  [1_preprocessing_indexing](Scripts/1_preprocessing_indexing.R ), waarna `.BAM`-bestanden zijn gegenereerd. Deze zijn gersorteerd en geïndexeerd in [02_sort_index_counts](Scripts/02_sort_index_counts.R) en vervolgens met `featureCounts()`  een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix.
 
-Met `featureCounts()` werd een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix. De differentiële expressie-analyse werd uitgevoerd in `DESeq2`, waarbij log2 fold changes en aangepaste p-waardes (padj) werden berekend. De significante genen (padj < 0.05, |log2FC| > 1) zijn gevisualiseerd in een volcano plot.
-Voor functionele interpretatie is een KEGG-pathwayanalyse uitgevoerd met `pathview`. De GO-enrichmentanalyse is uitgevoerd met `goseq`, met biascorrectie via een Probability Weighting Function. De top GO-termen zijn weergegeven in een dot plot.
+Vervolgens is met `DESeq2` in [03_deseq2_analysis_volcano](Scripts/03_deseq2_analysis_volcano.R) een differentiële expressieanalyse uitgevoerd, waarbij log2 fold changes en aangepaste p-waardes (padj) zijn berekend. De significante genen (padj < 0.05, |log2FC| > 1) zijn gevisualiseerd in een volcano plot.
 
-Alle gebruikte scripts zijn te vinden in [`Scripts/Eigen data.R`](Scripts/Eigen_data.R). Zie het [flowschema](Resultaten/Flowschema.png) voor een overzicht van de workflow.
+Voor functionele interpretatie is in [04_kegg_pathway](Scripts/04_kegg_pathway.R ) een KEGG-pathwayanalyse uitgevoerd met pathview, gericht op het 'Rheumatoid Arthritis' pathway. In [05_go_enrichment](Scripts/05_go_enrichment.R) is een GO-enrichmentanalyse uitgevoerd met goseq, inclusief biascorrectie via een Probability Weighting Function (pwf). De top GO-termen zijn weergegeven in een dot plot.
+
+Een volledig overzicht van de workflow is te vinden in het [Flowschema](Resultaten/Flowschema.png) . Het samengevoegde script waarin alle stappen zijn opgenomen, is beschikbaar in [Volledige_script](Scripts/Volledige_script.R).
 
 ## 📊 Resultaten
 
