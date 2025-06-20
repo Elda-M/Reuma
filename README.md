@@ -27,11 +27,11 @@ In dit project wordt met behulp van transcriptomische analyse onderzocht welke g
 
 ## 🔬 Methode
 
-Voor deze analyse is RNA-sequence data gebruikt van vier RA-patiënten en vier gezonde controles. De ruwe reads [FASTQ-bestanden](Data/Raw) zijn afkomstig uit een eerder gepubliceerde studie ([Platzer et al., 2019](Bronnen/Platzer_2019_RA_gene_expression.pdf)). Een overzicht van deze samples is te vinden in [Sample_metadata](Data/Raw/sample_metadata_table_RA.png). Deze zijn uitgelijnd op het humane referentiegenoom GRCh38.p14 (NCBI RefSeq: GCF_000001405.40) met behulp van het `Rsubread`-pakket in  [01_preprocessing_alignment](Scripts/01_preprocessing_alignment.R), waarna `.BAM`-bestanden zijn gegenereerd. Deze zijn gersorteerd en geïndexeerd in [02_sort_index_counts](Scripts/02_sort_index_counts.R) en opgelsagen in [Data/Processed](Data/Processedd). Daaarnaast is met  met `featureCounts()` een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix. 
+Voor deze analyse is RNA-sequence data gebruikt van vier RA-patiënten en vier gezonde controles. De ruwe reads [FASTQ-bestanden](Data/Raw) zijn afkomstig uit een eerder gepubliceerde studie ([Platzer et al., 2019](Bronnen/Platzer_2019_RA_gene_expression.pdf)). Een overzicht van deze samples is te vinden in [Sample_metadata](Data/Raw/sample_metadata_table_RA.png). Deze zijn uitgelijnd op het humane referentiegenoom GRCh38.p14 (NCBI RefSeq: GCF_000001405.40) met behulp van het `Rsubread`-pakket in  [01_preprocessing_alignment](Scripts/01_preprocessing_alignment.R), waarna `.BAM`-bestanden zijn gegenereerd. Deze zijn gersorteerd en geïndexeerd in [02_sort_index_counts](Scripts/02_sort_index_counts.R) en opgelsagen in [Data/Processed](Data/Processed). Daaarnaast is met  met `featureCounts()` een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix. 
 
 Vervolgens is met `DESeq2` in [03_deseq2_analysis_volcano](Scripts/03_deseq2_analysis_volcano.R) een differentiële expressieanalyse uitgevoerd, waarbij log2 fold changes en aangepaste p-waardes (padj) zijn berekend. De significante genen (padj < 0.05, |log2FC| > 1) zijn gevisualiseerd in een volcano plot.
 
-Voor functionele interpretatie is in [04_kegg_pathway](Scripts/04_kegg_pathway.R ) een KEGG-pathwayanalyse uitgevoerd met pathview, gericht op het 'Rheumatoid Arthritis' pathway. In [05_go_enrichment](Scripts/05_go_enrichment.R) is een GO-enrichmentanalyse uitgevoerd met goseq, inclusief biascorrectie via een Probability Weighting Function (pwf). De top GO-termen zijn weergegeven in een dot plot.
+Voor functionele interpretatie is in [04_kegg_pathway](Scripts/04_kegg_pathway.R) een KEGG-pathwayanalyse uitgevoerd met pathview, gericht op het 'Rheumatoid Arthritis' pathway. In [05_go_enrichment](Scripts/05_go_enrichment.R) is een GO-enrichmentanalyse uitgevoerd met goseq, inclusief biascorrectie via een Probability Weighting Function (pwf). De top GO-termen zijn weergegeven in een dot plot.
 
 Een volledig overzicht van de workflow is te vinden in het [Flowschema](Resultaten/Flowschema.png) . Het samengevoegde script waarin alle stappen zijn opgenomen, is beschikbaar in [Volledige_script](Scripts/Volledige_script.R).
 
@@ -45,7 +45,7 @@ Voor GO-analyse is eerst gecorrigeerd voor genlengtebias met een Probability Wei
 
 De KEGG-pathwayanalyse toonde verhoogde activiteit binnen het ‘Rheumatoid arthritis’ pathway. ([hsa05323.pathview](Resultaten/hsa05323.pathview.png)). In het KEGG-diagramGenen zijn meerdere genen betrokken bij ontstekingsroute, waaronder **IL6**, **IL1B** en **TLR2/4**, die duidelijk opgereguleerd zijn (rood).
 
-Zie (Genen_literatuur_tabel](Bronnen/Genen_literatuur_tabel.xlsx)) voor toelichting op de literatuurverwijzingen van specifieke genen.
+Zie [Genen_literatuur_tabel](Bronnen/Genen_literatuur_tabel.xlsx)) voor toelichting op de literatuurverwijzingen van specifieke genen.
 
 ## ✅ Conclusie 
 
