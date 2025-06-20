@@ -27,12 +27,13 @@ In dit project wordt met behulp van transcriptomische analyse onderzocht welke g
 
 ## 🔬 Methode
 
-Deze analyse gebruikt RNA-seq data van vier RA-patiënten en vier gezonde controles. De ruwe reads (FASTQ-bestanden) werden uitgelijnd op het humane referentiegenoom (GRCh38) met het `Rsubread`-pakket, waarna `.BAM`-bestanden werden gegenereerd. Deze zijn gesorteerd en geïndexeerd (`Data/processed/`).
+Voor deze analyse is RNA-sequence data gebruikt van vier RA-patiënten en vier gezonde controles. De ruwe reads (FASTQ-bestanden) bevinden zicht in [Raw_Data](Data/raw/) Deze zijn uitgelijnd op het humane referentiegenoom GRCh38 met behulp van het `Rsubread`-pakket in  [1_preprocessing_indexing](Scripts/1_preprocessing_indexing.R ), waarna `.BAM`-bestanden zijn gegenereerd. Deze zijn gersorteerd en geïndexeerd in [02_sort_index_counts](Scripts/02_sort_index_counts.R) en vervolgens met `featureCounts()`  een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix.
 
-Met `featureCounts()` werd een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix. De differentiële expressie-analyse werd uitgevoerd in `DESeq2`, waarbij log2 fold changes en aangepaste p-waardes (padj) werden berekend. De significante genen (padj < 0.05, |log2FC| > 1) zijn gevisualiseerd in een volcano plot.
-Voor functionele interpretatie is een KEGG-pathwayanalyse uitgevoerd met `pathview`. De GO-enrichmentanalyse is uitgevoerd met `goseq`, met biascorrectie via een Probability Weighting Function. De top GO-termen zijn weergegeven in een dot plot.
+Vervolgens is met `DESeq2` in [03_deseq2_analysis_volcano](Scripts/03_deseq2_analysis_volcano.R) een differentiële expressieanalyse uitgevoerd, waarbij log2 fold changes en aangepaste p-waardes (padj) zijn berekend. De significante genen (padj < 0.05, |log2FC| > 1) zijn gevisualiseerd in een volcano plot.
 
-Alle gebruikte scripts zijn te vinden in [`Scripts/Eigen data.R`](Scripts/Eigen_data.R). Zie het [flowschema](Resultaten/Flowschema.png) voor een overzicht van de workflow.
+Voor functionele interpretatie is in [04_kegg_pathway](Scripts/04_kegg_pathway.R ) een KEGG-pathwayanalyse uitgevoerd met pathview, gericht op het 'Rheumatoid Arthritis' pathway. In [05_go_enrichment](Scripts/05_go_enrichment.R) is een GO-enrichmentanalyse uitgevoerd met goseq, inclusief biascorrectie via een Probability Weighting Function (pwf). De top GO-termen zijn weergegeven in een dot plot.
+
+Een volledig overzicht van de workflow is te vinden in het [Flowschema](Resultaten/Flowschema.png) . Het samengevoegde script waarin alle stappen zijn opgenomen, is beschikbaar in [Volledige_script](Scripts/Volledige_script.R).
 
 ## 📊 Resultaten
 
