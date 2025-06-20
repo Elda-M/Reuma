@@ -1,9 +1,14 @@
-# Script: Sorteren, indexeren en gen-tellingen
-
+# Sorteren, indexeren & tellen (Scripts/02_sort_index_counts.R)
 library(Rsamtools)
 samples <- paste0("ra", 1:8)
+
+# Sorteer BAM
 lapply(samples, function(s) sortBam(file = paste0(s, ".BAM"), destination = paste0(s, ".sorted")))
 
+# Indexeer BAM
+lapply(samples, function(s) indexBam(paste0(s, ".sorted.bam")))
+
+# FeatureCounts telling
 library(readr)
 library(dplyr)
 library(Rsubread)
@@ -15,11 +20,11 @@ gff_gene$type <- "exon"
 
 allsamples <- paste0("ra", 1:8, ".bam")
 
-count_matrix <- featureCounts(files = allsamples,
-                              annot.ext = "GCF_000001405.25_GRCh37.p13_genomic.gtf.gz",
-                              isPairedEnd = TRUE,
-                              isGTFAnnotationFile = TRUE,
-                              GTF.attrType = "gene_id",
-                              useMetaFeatures = TRUE)
+count_matrix <- featureCounts( files = allsamples,
+                               annot.ext = "GCF_000001405.25_GRCh37.p13_genomic.gtf.gz",
+                               isPairedEnd = TRUE,
+                               isGTFAnnotationFile = TRUE,
+                               GTF.attrType = "gene_id",
+                               useMetaFeatures = TRUE)
 
-write.csv(count_matrix$counts, "count_matrix_groot.csv")
+write.table(count_matrix$counts, file = "count_matrix.txt")
