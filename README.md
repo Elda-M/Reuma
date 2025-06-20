@@ -3,7 +3,6 @@
 </p>
 
 # Transcriptomics onthult immuungerelateerde genexpressie bij Reumatoïde Artritis (RA)
----
 
 ## 📁 Inhoud/structuur
 
@@ -17,16 +16,14 @@
 - `data_stewardship/` - Mappen en bestanden om aan te tonen hoe je de projectdata beheert.
 
 ---
+## Introductie 
 
-Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes (zie [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf)). 
+Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. Hoewel de exacte oorzaak onbekend is, is er de afgelopen jaren veel vooruitgang geboekt in de behandeling ([Radu et al., 2021](Bronnen/Radu_2021_RA_management.pdf)).
 
-Eerdere studies (zie [....pdf](Bronnen/.....pdf)) tonen aan dat ontstekingsgerelateerde genen zoals *IL6*, *IL1B* en *TLR4* een sleutelrol spelen bij RA. Ook signaleringsroutes zoals TNF- en Toll-like-receptor pathways zijn herhaaldelijk in verband gebracht met de pathogenese van RA.
+Dankzij RNA-sequencing zijn er belangrijke genexpressiepatronen in RA ontdekt. Onderzoeken tonen aan dat genen betrokken bij het celskelet, evenals miRNA's, duidelijk anders tot expressie komen bij vroege RA in vergelijking met gezonde personen ([Platzer et al., 2019](Bronnen/Platzer_2019_RA_gene_expression.pdf)). RNA-sequencing maakt het mogelijk om differentieel tot exressie komende genen (DEGs) te indentificeren en deze te koppelen aan biologische processen zoals Gene Ontology (GO) en KEGG-pathways. Deze aanpak geeft meer inzicht in de moleculaire mechanismen van RA ([Orr et al., 2022](Bronnen/Orr_2022_RNA_sequencing.pdf)).
 
-RNA-sequencing (RNA-seq) biedt een krachtig middel om de expressie van duizenden genen gelijktijdig te meten. Door het vergelijken van genexpressieprofielen tussen RA-patiënten en gezonde controles kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens worden gekoppeld aan biologische processen via Gene Ontology (GO) en aan signaalroutes via KEGG-pathways, wat kan leiden tot nieuwe inzichten in de pathogenese van RA (zie [RNAsequencing.pdf](Bronnen/RNAsequencing.pdf)).
+In dit project wordt met behulp van transcriptomische analyse onderzocht welke genen bij RA anders tot expressie komen dan bij gezonde personen en welke biologische processen daarbij betrokken zijn. Het doel is om via deze analyse meer inzicht te krijgen in de werking van RA op genetisch niveau.
 
-In dit project analyseren we RNA-seq data van synoviaal weefsel afkomstig van vier RA-patiënten en vier gezonde individuen. We identificeren genen die significant op- of neerwaarts gereguleerd zijn, en voeren pathway- en GO-analyse uit om te onderzoeken welke biologische mechanismen mogelijk een rol spelen bij RA. Het doel is om nieuwe aanknopingspunten te vinden voor het begrijpen van de ziekte op transcriptomisch niveau.
-
----
 
 ## 🔬 Methode
 
@@ -36,10 +33,6 @@ Met `featureCounts()` werd een gen-telling uitgevoerd op basis van een GTF-besta
 Voor functionele interpretatie is een KEGG-pathwayanalyse uitgevoerd met `pathview`. De GO-enrichmentanalyse is uitgevoerd met `goseq`, met biascorrectie via een Probability Weighting Function. De top GO-termen zijn weergegeven in een dot plot.
 
 Alle gebruikte scripts zijn te vinden in [`Scripts/Eigen data.R`](Scripts/Eigen_data.R). Zie het [flowschema](Resultaten/Flowschema.png) voor een overzicht van de workflow.
-
-
----
-
 
 ## 📊 Resultaten
 
@@ -53,9 +46,6 @@ De KEGG-pathwayanalyse ([hsa05323.pathview.png](Resultaten/hsa05323.pathview.png
 
 Alle resultaten zijn opgeslagen in `Resultaten/`, inclusief de ruwe DESeq2-output (`Resultaten_RA_vs_Normal.csv`) en de gebruikte tellingen (`count_matrix_groot.csv`).
 
-
-
-
 ## ✅ Conclusie 
 
 Deze transcriptomics-analyse heeft geleid tot de identificatie van meerdere differentieel tot expressie komende genen (DEGs) tussen RA-patiënten en gezonde individuen. Opvallend waren onder andere genen betrokken bij ontstekingsreacties en immuunactivatie, zoals IL6, TLR2/4 en CXCL-familieleden. De GO-enrichmentanalyse benadrukte vooral termen gerelateerd aan immuunrespons, RNA-polymeraseactiviteit en T-helpercel differentiatie. Deze resultaten zijn in lijn met bestaande literatuur over de rol van het immuunsysteem bij de pathogenese van RA.
@@ -64,22 +54,6 @@ De KEGG-pathwayanalyse van het ‘Rheumatoid arthritis’ signaalnetwerk bevesti
 
 Hoewel het aantal monsters beperkt was (n = 8), bieden de resultaten een waardevolle eerste indruk van genregulatie bij RA. Toekomstig onderzoek zou kunnen uitbreiden met een groter cohort, differentiatie tussen vroege en late RA, en aanvullende celtype-specifieke analyse (bijv. single-cell RNA-seq). Verder validatie via qPCR of proteomics wordt aanbevolen om de biologische relevantie van deze genen in context van RA te bevestigen.
 
----
-
-
-
-
-## 💻 GitHub en Reproduceerbaarheid
-
-Voor dit project is GitHub ingezet om de RNA-seq analyse reproduceerbaar en transparant te beheren. De repository is logisch gestructureerd met aparte mappen voor ruwe data (data/), scripts (scripts/), resultaten (results/) en documentatie (docs/).
-
-Alle gebruikte scripts zijn stap voor stap gedocumenteerd, inclusief uitleg over welke packages en parameters zijn toegepast. Elke belangrijke analyse (mapping, gen-telling, DE-analyse, KEGG/GO-analyse) is terug te vinden in het script RA_analysis_script.R.
-
-De workflow is volledig reproduceerbaar: met de ruwe FASTQ-bestanden en het script kunnen alle resultaten exact opnieuw worden gegenereerd.
-
-Visualisaties (zoals de volcano plot en KEGG-pathwayplaatjes) zijn opgeslagen als PNG-bestanden en direct toegankelijk via de results/ map.
-
-Versiebeheer via GitHub zorgt ervoor dat iedere aanpassing in het script of data-analyseproces wordt bijgehouden. Zo is transparant te volgen wat er wanneer is aangepast, wat bijdraagt aan de wetenschappelijke betrouwbaarheid van dit project.
 
 
 
