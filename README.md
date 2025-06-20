@@ -2,9 +2,7 @@
   <img src="Voorblad/Reuma_voorblad.png" alt="Voorblad" width="600"/>
 </p>
 
-Transcriptomics onthult immuungerelateerde genexpressie bij Reumatoïde Artritis (RA)
-
----
+# Transcriptomics onthult immuungerelateerde genexpressie bij Reumatoïde Artritis (RA)
 
 Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes (zie [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf)). 
 
