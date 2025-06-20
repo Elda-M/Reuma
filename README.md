@@ -3,16 +3,7 @@
 </p>
 
 # Transcriptomics onthult immuungerelateerde genexpressie bij Reumatoïde Artritis (RA)
-
-Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes (zie [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf)). 
-
-Eerdere studies (zie [....pdf](Bronnen/.....pdf)) tonen aan dat ontstekingsgerelateerde genen zoals *IL6*, *IL1B* en *TLR4* een sleutelrol spelen bij RA. Ook signaleringsroutes zoals TNF- en Toll-like-receptor pathways zijn herhaaldelijk in verband gebracht met de pathogenese van RA.
-
-RNA-sequencing (RNA-seq) biedt een krachtig middel om de expressie van duizenden genen gelijktijdig te meten. Door het vergelijken van genexpressieprofielen tussen RA-patiënten en gezonde controles kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens worden gekoppeld aan biologische processen via Gene Ontology (GO) en aan signaalroutes via KEGG-pathways, wat kan leiden tot nieuwe inzichten in de pathogenese van RA (zie [RNAsequencing.pdf](Bronnen/RNAsequencing.pdf)).
-
-In dit project analyseren we RNA-seq data van synoviaal weefsel afkomstig van vier RA-patiënten en vier gezonde individuen. We identificeren genen die significant op- of neerwaarts gereguleerd zijn, en voeren pathway- en GO-analyse uit om te onderzoeken welke biologische mechanismen mogelijk een rol spelen bij RA. Het doel is om nieuwe aanknopingspunten te vinden voor het begrijpen van de ziekte op transcriptomisch niveau.
-
---- 
+---
 
 ## 📁 Inhoud/structuur
 
@@ -24,6 +15,16 @@ In dit project analyseren we RNA-seq data van synoviaal weefsel afkomstig van vi
 - `README.md` - Deze pagina met een toelichting op de projectstructuur en inhoud.
 - `Voorblad/` - Documenten die horen bij de opmaak van het verslag
 - `data_stewardship/` - Mappen en bestanden om aan te tonen hoe je de projectdata beheert.
+
+---
+
+Reumatoïde artritis (RA) is een chronische auto-immuunziekte waarbij het immuunsysteem het eigen gewrichtsslijmvlies aanvalt. Dit leidt tot ontsteking, zwelling en uiteindelijk tot beschadiging van kraakbeen en bot. De moleculaire mechanismen die ten grondslag liggen aan de ontwikkeling van RA zijn nog niet volledig opgehelderd, maar eerdere studies wijzen op een centrale rol van immuungerelateerde genen en signaalroutes (zie [RA_gene_expression.pdf](Bronnen/RA_gene_expression.pdf)). 
+
+Eerdere studies (zie [....pdf](Bronnen/.....pdf)) tonen aan dat ontstekingsgerelateerde genen zoals *IL6*, *IL1B* en *TLR4* een sleutelrol spelen bij RA. Ook signaleringsroutes zoals TNF- en Toll-like-receptor pathways zijn herhaaldelijk in verband gebracht met de pathogenese van RA.
+
+RNA-sequencing (RNA-seq) biedt een krachtig middel om de expressie van duizenden genen gelijktijdig te meten. Door het vergelijken van genexpressieprofielen tussen RA-patiënten en gezonde controles kunnen differentieel tot expressie komende genen (DEGs) worden geïdentificeerd. Deze DEGs kunnen vervolgens worden gekoppeld aan biologische processen via Gene Ontology (GO) en aan signaalroutes via KEGG-pathways, wat kan leiden tot nieuwe inzichten in de pathogenese van RA (zie [RNAsequencing.pdf](Bronnen/RNAsequencing.pdf)).
+
+In dit project analyseren we RNA-seq data van synoviaal weefsel afkomstig van vier RA-patiënten en vier gezonde individuen. We identificeren genen die significant op- of neerwaarts gereguleerd zijn, en voeren pathway- en GO-analyse uit om te onderzoeken welke biologische mechanismen mogelijk een rol spelen bij RA. Het doel is om nieuwe aanknopingspunten te vinden voor het begrijpen van de ziekte op transcriptomisch niveau.
 
 ---
 
