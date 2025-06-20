@@ -27,7 +27,7 @@ In dit project wordt met behulp van transcriptomische analyse onderzocht welke g
 
 ## 🔬 Methode
 
-Voor deze analyse is RNA-sequence data gebruikt van vier RA-patiënten en vier gezonde controles. De ruwe reads (FASTQ-bestanden) bevinden zicht in [Raw_Data](Data/raw/) Deze zijn uitgelijnd op het humane referentiegenoom GRCh38.p14 (NCBI RefSeq: GCF_000001405.40) met behulp van het `Rsubread`-pakket in  [1_preprocessing_indexing](Scripts/1_preprocessing_indexing.R ), waarna `.BAM`-bestanden zijn gegenereerd. Deze zijn gersorteerd en geïndexeerd in [02_sort_index_counts](Scripts/02_sort_index_counts.R) en vervolgens met `featureCounts()`  een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix.
+Voor deze analyse is RNA-sequence data gebruikt van vier RA-patiënten en vier gezonde controles. De ruwe reads [FASTQ-bestanden](Data/Raw) zijn afkomstig uit een eerder gepubliceerde studie ([Platzer et al., 2019](Bronnen/Platzer_2019_RA_gene_expression.pdf)) en bevinden zicht in [Raw_Data](Data/raw/) Een overzicht van deze samples is te vinden in [Sample_metadata](Data/Raw/sample_metadata_table_RA.png). Deze zijn uitgelijnd op het humane referentiegenoom GRCh38.p14 (NCBI RefSeq: GCF_000001405.40) met behulp van het `Rsubread`-pakket in  [1_preprocessing_indexing](Scripts/1_preprocessing_indexing.R ), waarna `.BAM`-bestanden zijn gegenereerd. Deze zijn gersorteerd en geïndexeerd in [02_sort_index_counts](Scripts/02_sort_index_counts.R) en vervolgens met `featureCounts()`  een gen-telling uitgevoerd op basis van een GTF-bestand, resulterend in een count-matrix.
 
 Vervolgens is met `DESeq2` in [03_deseq2_analysis_volcano](Scripts/03_deseq2_analysis_volcano.R) een differentiële expressieanalyse uitgevoerd, waarbij log2 fold changes en aangepaste p-waardes (padj) zijn berekend. De significante genen (padj < 0.05, |log2FC| > 1) zijn gevisualiseerd in een volcano plot.
 
@@ -37,15 +37,14 @@ Een volledig overzicht van de workflow is te vinden in het [Flowschema](Resultat
 
 ## 📊 Resultaten
 
-Na kwaliteitscontrole en mapping zijn de reads succesvol uitgelijnd op het humane referentiegenoom GRCh38. Op basis van de gen-tellingen (`count_matrix_groot.csv`) werd met `DESeq2` een differentiële expressieanalyse uitgevoerd. Hieruit kwamen meerdere genen significant verschillend tot expressie tussen RA- en controlemonsters.
+Uit de RNA-seq analyse zijn meerdere genen gevonden die significant verschillen in expressie tussen reumatoïde artritis (RA)-patiënten en gezonde controles.
 
-In de volcano plot ([VolcanoplotWC.png](Resultaten/VolcanoplotWC.png)) zijn deze DEGs visueel weergegeven. Genen met een p-waarde < 0.05 en |log2 fold change| > 1 zijn rood gekleurd; enkele opvallende genen met hoge expressieverandering zijn gelabeld.
+In de volcano plot ([VolcanoplotWC.png](Resultaten/VolcanoplotWC.png)) zijn deze DEGs visueel weergegeven. Genen met een p-waarde < 0.05 en |log2 fold change| > 1 zijn rood gekleurd; Opvallende sterk gereguleerde genen zijn onder andere ANKRD30BL, MT-ND6, ZNF598, CXCR1 en ACTBPA
 
 Voor GO-analyse is eerst gecorrigeerd voor genlengtebias met een Probability Weighting Function ([pwf_plot.png](Resultaten/pwf_plot.png)). De daadwerkelijke GO-enrichment ([GO_resultaten_plot.png](Resultaten/GO_resultaten_plot.png)) toont dat termen gerelateerd aan immuunrespons, RNA-polymerase II-activiteit sterk verrijkt zijn onder de DE-genen.
 
-De KEGG-pathwayanalyse ([hsa05323.pathview.png](Resultaten/hsa05323.pathview.png)) geeft inzicht in RA-gerelateerde signaalroutes. Genen zoals **IL6**, **IL1B**, en **TLR2/4** vertonen duidelijke opregulatie binnen het ‘Rheumatoid arthritis’ pathway.
+De KEGG-pathwayanalyse toonde verhoogde activiteit binnen het ‘Rheumatoid arthritis’ pathway. ([hsa05323.pathview.png](Resultaten/hsa05323.pathview.png)). n het KEGG-diagramGenen zijn meerdere genen betrokken bij ontstekingsroutes zoals **IL6**, **IL1B** en **TLR2/4** opgereguleerd.
 
-Alle resultaten zijn opgeslagen in `Resultaten/`, inclusief de ruwe DESeq2-output (`Resultaten_RA_vs_Normal.csv`) en de gebruikte tellingen (`count_matrix_groot.csv`).
 
 ## ✅ Conclusie 
 
