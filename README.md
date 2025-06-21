@@ -45,7 +45,7 @@ Voor GO-analyse is eerst gecorrigeerd voor genlengtebias met een Probability Wei
 
 De KEGG-pathwayanalyse toonde verhoogde activiteit binnen het ‘Rheumatoid arthritis’ pathway ([hsa05323.pathview](Resultaten/hsa05323.pathview.png)). In het KEGG-diagramGenen zijn meerdere genen betrokken bij ontstekingsroute, waaronder **IL6**, **IL1B** en **TLR2/4**, die duidelijk opgereguleerd zijn (rood).
 
-Zie [Genen_literatuur_tabel](Bronnen/Genen_literatuur_tabel.xlsx)) voor toelichting op de literatuurverwijzingen van specifieke genen.
+Zie [Genen_literatuur_tabel](Bronnen/Genen_literatuur_tabel.xlsx) voor toelichting op de literatuurverwijzingen van specifieke genen.
 
 ## ✅ Conclusie 
 
