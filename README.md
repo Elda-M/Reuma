@@ -43,7 +43,7 @@ In de volcano plot ([Volcanoplot](Resultaten/VolcanoplotWC.png)) zijn deze DEGs 
 
 Voor GO-analyse is eerst gecorrigeerd voor genlengtebias met een Probability Weighting Function ([pwf_plot](Resultaten/pwf_plot.png)). De GO-enrichment ([GO_resultaten_plot](Resultaten/GO_resultaten_plot.png)) laat zien dat vooral processen zoals immuunrespons en RNA-polymerase II-activiteit verrijkt zijn bij de genen die verschillend tot expressie komen
 
-De KEGG-pathwayanalyse toonde verhoogde activiteit binnen het ‘Rheumatoid arthritis’ pathway. ([hsa05323.pathview](Resultaten/hsa05323.pathview.png)). In het KEGG-diagramGenen zijn meerdere genen betrokken bij ontstekingsroute, waaronder **IL6**, **IL1B** en **TLR2/4**, die duidelijk opgereguleerd zijn (rood).
+De KEGG-pathwayanalyse toonde verhoogde activiteit binnen het ‘Rheumatoid arthritis’ pathway ([hsa05323.pathview](Resultaten/hsa05323.pathview.png)). In het KEGG-diagramGenen zijn meerdere genen betrokken bij ontstekingsroute, waaronder **IL6**, **IL1B** en **TLR2/4**, die duidelijk opgereguleerd zijn (rood).
 
 Zie [Genen_literatuur_tabel](Bronnen/Genen_literatuur_tabel.xlsx)) voor toelichting op de literatuurverwijzingen van specifieke genen.
 
